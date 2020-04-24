@@ -69,6 +69,31 @@ xmlhttpAllCases.onreadystatechange = function() {
 				responsive: true
 			}
         });
+        debugger
+        const todaysCasesCtx = document.getElementById('today-cases').getContext('2d');
+        const todaysCasesChart = new Chart(todaysCasesCtx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: '# new confirmed',
+                    backgroundColor: 'rgba(237, 96, 14, 0.6)',
+                    borderWidth: 1,
+                    data: [res[res.length - 2].Confirmed - res[res.length - 3].Confirmed]
+                },
+                {
+                    label: '# new recovered',
+                    backgroundColor: 'rgba(65, 212, 42, 0.6)',
+                    borderWidth: 1,
+                    data: [res[res.length - 2].Recovered - res[res.length - 3].Recovered]
+                },
+                {
+                    label: '# new deaths',
+                    backgroundColor: 'rgba(232, 63, 82, 0.6)',
+                    borderWidth: 1,
+                    data: [res[res.length - 2].Deaths - res[res.length - 3].Deaths]
+                }]
+            }
+        });
     }
 };
 xmlhttpAllCases.open("GET", "https://api.covid19api.com/dayone/country/morocco", true);
@@ -77,30 +102,10 @@ xmlhttpAllCases.send();
 
 const xmlhttpTodaysCases = new XMLHttpRequest();
 xmlhttpTodaysCases.onreadystatechange = function() {
-    const todaysCasesCtx = document.getElementById('today-cases').getContext('2d');
-    const todaysCasesChart = new Chart(todaysCasesCtx, {
-        type: 'bar',
-        data: {
-            datasets: [{
-				label: '# new confirmed',
-				backgroundColor: 'rgba(237, 96, 14, 0.6)',
-				borderWidth: 1,
-				data: [34]
-			},
-            {
-				label: '# new recovered',
-				backgroundColor: 'rgba(65, 212, 42, 0.6)',
-				borderWidth: 1,
-				data: [674]
-			},
-            {
-				label: '# new deaths',
-				backgroundColor: 'rgba(232, 63, 82, 0.6)',
-				borderWidth: 1,
-				data: [1203]
-			}]
-        }
-    });
+    if (this.readyState == 4 && this.status == 200) {
+        const res = JSON.parse(this.responseText);
+        
+    }
 }
 const generateTodaysDate = () => {
     const today = new Date();
