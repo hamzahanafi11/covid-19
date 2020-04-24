@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="hello" >
+
+    </div>
+      <script>
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                document.getElementById("hello").innerHTML = myObj.Global.NewConfirmed;
+            }
+            };
+            xmlhttp.open("GET", "https://api.covid19api.com/summary", true);
+            xmlhttp.send();
+      </script>
+</body>
+</html>
