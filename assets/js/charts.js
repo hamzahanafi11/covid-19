@@ -98,27 +98,3 @@ xmlhttpAllCases.onreadystatechange = function() {
 };
 xmlhttpAllCases.open("GET", "https://api.covid19api.com/dayone/country/morocco", true);
 xmlhttpAllCases.send();
-
-
-const xmlhttpTodaysCases = new XMLHttpRequest();
-xmlhttpTodaysCases.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        const res = JSON.parse(this.responseText);
-        
-    }
-}
-const generateTodaysDate = () => {
-    const today = new Date();
-    const month = ('0' + (today.getMonth() + 1)).slice(-2);
-    return today.getFullYear()+"-"+month+"-"+today.getDate()+"T00:00:00Z";
-}
-
-const generateYesterdaysDate = () => {
-    const today = new Date();
-    const month = ('0' + (today.getMonth() + 1)).slice(-2);
-    const yesterday = today.getDate() - 1;
-    return today.getFullYear()+"-"+month+"-"+yesterday+"T00:00:00Z";
-}
-xmlhttpTodaysCases.open("GET", "https://api.covid19api.com/country/morocco/status/deaths?from="+generateTodaysDate()+"&to="+generateYesterdaysDate(), true);
-xmlhttpTodaysCases.send();
-
