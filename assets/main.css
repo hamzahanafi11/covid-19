@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Entezare';
+    src: url('fonts/Product-Sans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Nexa';
+    src: url("fonts/Quicksand-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #f7f8fa;
+    font-family:'Entezare';
+}
+/* main parts of the grid */
+.heading {
+    margin-top: 100px;
+    color: #5b566e;
+}
+.content {
+    margin-top: 80px;
+    color: #5b566e;
+}
+footer{
+    margin-top: 40px;
+    font-family:'Nexa', Tahoma, serif;
+    color: #b5b3c3;
+}
+/* gif image developer */
+.developer-icon {
+    margin-top: -300px;
+    margin-left: 100px;
+    width: 100%;
+
+}
+/* parts of the content*/
+
+.welcome{
+    text-align: center;
+}
+.space{
+    margin-top: 100px;
+}
+
+
+
+/* parts of the footer */
+.footer-left{
+    float: left;
+}
+.footer-right{
+    float:right;
+}
+.footer-right a{
+    color: #b5b3c3;
+}
+.footer-right i{
+    margin-left: 10px;
+}
+.footer-right i:hover{
+    cursor: pointer;
+}

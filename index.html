@@ -2,25 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <script src="assets/chart.min.js"></script>
     <title>COVID-19</title>
-    <style>
-        
-    </style>
 </head>
 <body>
     <div id="hello" >
 
     </div>
-      <script>
-            const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                document.getElementById("hello").innerHTML = myObj.Global.NewConfirmed;
-            }
-            };
-            xmlhttp.open("GET", "https://api.covid19api.com/summary", true);
-            xmlhttp.send();
-      </script>
+    <div class="container content">
+        <div class="row">
+            <div class="col-md welcome">
+                <h1> Welcome To covid 19 statistics in Morocco By Hamza :D </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                all cases in the last 30 days
+                <canvas id="all-cases" height="80"></canvas>
+            </div>
+        </div>
+
+        <div class="row space">
+            <div class="col-md-6">
+                todays new cases bar chart
+                <canvas id="today-cases" height="150"></canvas>
+            </div>
+            <div class="col-md-6">
+                total of all cases
+                <canvas id="summary-cases" height="150"></canvas>
+            </div>
+        </div>
+
+
+    </div>
+    <footer>
+        <div class="container">
+            <div class="col-md">
+                <hr>
+                <p class="footer-left"> 2020 HAMZA HANAFI </p>
+                <p class="footer-right">
+                    <a target="_blank" href="https://www.linkedin.com/in/hamzahanafi/"><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://github.com/hamzahanafi11/"><i class="fab fa-github"></i></a>
+                    <a target="_blank" href="http://hamza-hanafi.francecentral.cloudapp.azure.com/"><i class="fab fa-jenkins"></i></a>
+                </p>
+            </div>
+        </div>
+    </footer>
+      <script src="assets/js/charts.js"></script>
 </body>
 </html>
