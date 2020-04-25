@@ -46,6 +46,16 @@ xmlhttpAllCases.onreadystatechange = function() {
                     borderColor: colors.deaths,
                     borderWidth: 1
                 }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'all cases in the last 30 days'
+                }
             }
         });
         const summaryCtx = document.getElementById('summary-cases').getContext('2d');
@@ -71,8 +81,15 @@ xmlhttpAllCases.onreadystatechange = function() {
 				]
 			},
 			options: {
-				responsive: true
-			}
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Total of all cases'
+                }
+            }
         });
     }
 };
@@ -89,6 +106,10 @@ xmlhttpTodayCases.onreadystatechange = function() {
         const newConfirmed = moroccoStats[0].NewConfirmed;
         const newRecovered = moroccoStats[0].NewRecovered;
         const newDeaths    = moroccoStats[0].NewDeaths;
+        debugger
+        document.getElementById('total-confirmed').innerHTML = moroccoStats[0].TotalConfirmed;
+        document.getElementById('total-recovered').innerHTML = moroccoStats[0].TotalRecovered;
+        document.getElementById('total-deaths').innerHTML = moroccoStats[0].TotalDeaths;
         const todaysCasesCtx = document.getElementById('today-cases').getContext('2d');
         const todaysCasesChart = new Chart(todaysCasesCtx, {
             type: 'bar',
@@ -112,6 +133,16 @@ xmlhttpTodayCases.onreadystatechange = function() {
                     borderWidth: 1,
                     data: [newDeaths]
                 }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Today\'s new cases'
+                }
             }
         });
     }

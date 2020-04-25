@@ -13,29 +13,34 @@
     </div>
     <div class="container content">
         <div class="row">
-            <div class="col-md welcome">
-                <h1> Welcome To covid 19 statistics in Morocco By Hamza :D </h1>
+            <div class="col-md ">
+                <h3 class="welcome"> COVID 19 statistics in Morocco </h3>
             </div>
+        </div>
+        <div class="row summary">
+                <div class="col-md-4 total-confirmed">
+                    Total Confirmed <br><span id="total-confirmed" class="total-count" >  </span>
+                </div>
+                <div class="col-md-4 total-recovered">
+                    Total Recovered <br><span id="total-recovered" class="total-count" >  </span>
+                </div>
+                <div class="col-md-4 total-deaths">
+                    Total Deaths <br><span id="total-deaths" class="total-count" >  </span>
+                </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                all cases in the last 30 days
                 <canvas id="all-cases" height="80"></canvas>
             </div>
         </div>
-
         <div class="row space">
             <div class="col-md-6">
-                todays new cases bar chart
                 <canvas id="today-cases" height="150"></canvas>
             </div>
             <div class="col-md-6">
-                total of all cases
                 <canvas id="summary-cases" height="150"></canvas>
             </div>
         </div>
-
-
     </div>
     <footer>
         <div class="container">

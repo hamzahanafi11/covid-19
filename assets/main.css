@@ -20,7 +20,7 @@ body {
     color: #5b566e;
 }
 .content {
-    margin-top: 80px;
+    margin-top: 40px;
     color: #5b566e;
 }
 footer{
@@ -39,11 +39,32 @@ footer{
 
 .welcome{
     text-align: center;
+    margin-bottom: 50px;
+    font-weight: 200!important;
 }
 .space{
     margin-top: 100px;
 }
+.summary{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.total-confirmed{
+    border-right: 1px solid #5b566e;
+    font-weight: 200;
+}
+.total-recovered{
+    border-right: 1px solid #5b566e;
+    font-weight: 200;
+}
+.total-deaths{
+    font-weight: 200;
+}
 
+.total-count{
+    font-size: larger;
+    font-weight: bold;
+}
 
 
 /* parts of the footer */
