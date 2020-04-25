@@ -7,8 +7,8 @@ const xmlhttpAllCases = new XMLHttpRequest();
 xmlhttpAllCases.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         const res = JSON.parse(this.responseText);
-        const startIndex = res.length - 30;
-        const endIndex   = res.length;
+        const startIndex = res.length - 31;
+        const endIndex   = res.length - 1;
         res.slice(startIndex, endIndex).forEach(element => {
             confirmed.push(element.Confirmed);
             recovered.push(element.Recovered);
