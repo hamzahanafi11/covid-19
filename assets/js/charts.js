@@ -2,6 +2,11 @@ const days      = [];
 const confirmed = [];
 const recovered = [];
 const deaths    = [];
+const colors = {
+    confirmed : 'rgba(75, 61, 127, 0.6)',
+    recovered : 'rgba(65, 212, 42, 0.6)',
+    deaths    : 'rgba(232, 63, 82, 0.6)'
+}
 
 const xmlhttpAllCases = new XMLHttpRequest();
 xmlhttpAllCases.onreadystatechange = function() {
@@ -24,21 +29,21 @@ xmlhttpAllCases.onreadystatechange = function() {
                     label: '# of Confirmed',
                     data: confirmed,
                     fill: false,
-                    borderColor: 'rgba(237, 96, 14, 0.6)',
+                    borderColor: colors.confirmed,
                     borderWidth: 1
                 },
                 {
                     label: '# of Recovered',
                     data: recovered,
                     fill: false,
-                    borderColor: 'rgba(65, 212, 42, 0.6)',
+                    borderColor: colors.recovered,
                     borderWidth: 1
                 },
                 {
                     label: '# of Deaths',
                     data: deaths,
                     fill: false,
-                    borderColor: 'rgba(232, 63, 82, 0.6)',
+                    borderColor: colors.deaths,
                     borderWidth: 1
                 }]
             }
@@ -54,9 +59,9 @@ xmlhttpAllCases.onreadystatechange = function() {
 						res[res.length - 1].Deaths
 					],
 					backgroundColor: [
-                        'rgba(237, 96, 14, 0.6)',
-                        'rgba(65, 212, 42, 0.6)',
-                        'rgba(232, 63, 82, 0.6)'
+                        colors.confirmed,
+                        colors.recovered,
+                        colors.deaths
 					],
 				}],
 				labels: [
@@ -69,28 +74,31 @@ xmlhttpAllCases.onreadystatechange = function() {
 				responsive: true
 			}
         });
-        debugger
+        const newConfirmed = res[res.length - 2].Confirmed - res[res.length - 3].Confirmed;
+        const newRecovered = res[res.length - 2].Recovered - res[res.length - 3].Recovered;
+        const newDeaths    = res[res.length - 2].Deaths - res[res.length - 3].Deaths;
         const todaysCasesCtx = document.getElementById('today-cases').getContext('2d');
         const todaysCasesChart = new Chart(todaysCasesCtx, {
             type: 'bar',
             data: {
+                labels: ['new cases'],
                 datasets: [{
                     label: '# new confirmed',
-                    backgroundColor: 'rgba(237, 96, 14, 0.6)',
+                    backgroundColor: colors.confirmed,
                     borderWidth: 1,
-                    data: [res[res.length - 2].Confirmed - res[res.length - 3].Confirmed]
+                    data: [newConfirmed]
                 },
                 {
                     label: '# new recovered',
-                    backgroundColor: 'rgba(65, 212, 42, 0.6)',
+                    backgroundColor: colors.recovered,
                     borderWidth: 1,
-                    data: [res[res.length - 2].Recovered - res[res.length - 3].Recovered]
+                    data: [newRecovered]
                 },
                 {
                     label: '# new deaths',
-                    backgroundColor: 'rgba(232, 63, 82, 0.6)',
+                    backgroundColor: colors.deaths,
                     borderWidth: 1,
-                    data: [res[res.length - 2].Deaths - res[res.length - 3].Deaths]
+                    data: [newDeaths]
                 }]
             }
         });
