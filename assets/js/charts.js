@@ -74,9 +74,21 @@ xmlhttpAllCases.onreadystatechange = function() {
 				responsive: true
 			}
         });
-        const newConfirmed = res[res.length - 2].Confirmed - res[res.length - 3].Confirmed;
-        const newRecovered = res[res.length - 2].Recovered - res[res.length - 3].Recovered;
-        const newDeaths    = res[res.length - 2].Deaths - res[res.length - 3].Deaths;
+    }
+};
+xmlhttpAllCases.open("GET", "https://api.covid19api.com/dayone/country/morocco", true);
+xmlhttpAllCases.send();
+
+/* new cases for today */
+const xmlhttpTodayCases = new XMLHttpRequest();
+xmlhttpTodayCases.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+        const res = JSON.parse(this.responseText);
+        const moroccoStats = res.Countries.filter((country) => country.CountryCode === "MA" );
+        const newConfirmed = moroccoStats[0].NewConfirmed;
+        const newRecovered = moroccoStats[0].NewRecovered;
+        const newDeaths    = moroccoStats[0].NewDeaths;
         const todaysCasesCtx = document.getElementById('today-cases').getContext('2d');
         const todaysCasesChart = new Chart(todaysCasesCtx, {
             type: 'bar',
@@ -103,6 +115,6 @@ xmlhttpAllCases.onreadystatechange = function() {
             }
         });
     }
-};
-xmlhttpAllCases.open("GET", "https://api.covid19api.com/dayone/country/morocco", true);
-xmlhttpAllCases.send();
+}
+xmlhttpTodayCases.open("GET", "https://api.covid19api.com/summary", true);
+xmlhttpTodayCases.send();
