@@ -106,7 +106,6 @@ xmlhttpTodayCases.onreadystatechange = function() {
         const newConfirmed = moroccoStats[0].NewConfirmed;
         const newRecovered = moroccoStats[0].NewRecovered;
         const newDeaths    = moroccoStats[0].NewDeaths;
-        debugger
         document.getElementById('total-confirmed').innerHTML = moroccoStats[0].TotalConfirmed;
         document.getElementById('total-recovered').innerHTML = moroccoStats[0].TotalRecovered;
         document.getElementById('total-deaths').innerHTML = moroccoStats[0].TotalDeaths;
