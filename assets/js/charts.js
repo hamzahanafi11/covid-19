@@ -64,9 +64,9 @@ xmlhttpAllCases.onreadystatechange = function() {
 			data: {
 				datasets: [{
 					data: [
-						res[res.length - 1].Confirmed,
-						res[res.length - 1].Recovered,
-						res[res.length - 1].Deaths
+						res[res.length - 2].Confirmed,
+						res[res.length - 2].Recovered,
+						res[res.length - 2].Deaths
 					],
 					backgroundColor: [
                         colors.confirmed,
